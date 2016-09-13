@@ -5,17 +5,10 @@ public class Node<T> {
 	private T value;
 	private Node<T> next;
 	
-	
-	/** The Node object constructor.
-	 * @param value The value of the new node.
-	 */
 	public Node(T value) {
 		this.value = value;
 	}
-
-	/** Gets the value of the node.
-	 * @return Returns value.
-	 */
+	
 	public T getValue() {
 		return value;
 	}

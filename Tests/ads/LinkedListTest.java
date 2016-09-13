@@ -13,7 +13,12 @@ public class LinkedListTest {
 
 	@Test
 	public void testAdd() {
-		fail("Not yet implemented");
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.add(5);
+		assertTrue(".add() increments the size by 1.", list.size() == 1);
+		assertTrue("The object is added when the list is empty", list.front().getValue() == 5);
+		list.add(10);
+		assertTrue("The object is added when the list is non-empty", list.back().getValue() == 10);
 	}
 
 	@Test
