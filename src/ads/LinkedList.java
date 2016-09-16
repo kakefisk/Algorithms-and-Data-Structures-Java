@@ -2,15 +2,13 @@ package ads;
 
 public class LinkedList<T> {
 	
-	private int size;
-	private Node<T> head;
+	private int size = 0;
+	private Node<T> head = new Node<T>(null);
 
 	/** LinkedList object constructor.
 	 *  
 	 */
 	public LinkedList() {
-		size = 0;
-		head = null;
 	}
 	
 	/** Adds a new Node with the specified object to the back of the list.
@@ -19,11 +17,7 @@ public class LinkedList<T> {
 	 */
 	public Node<T> add(T object) {
 		Node<T> node = new Node<T>(object);
-		if (head == null) {
-			head = node;
-		} else {
-			back().setNext(node);
-		}
+		backNode().setNext(node);
 		size++;
 		return node;
 	}
@@ -36,27 +30,24 @@ public class LinkedList<T> {
 	public Node<T> insert(int pos, T object) {
 		if (pos < 0 || pos > size) return null;
 		Node<T> node = new Node<T>(object);
-		if (head == null) {
-			head = node;
+		Node<T> current = nodeAt(pos);
+		if (pos != size) {
+			Node<T> prev = current;
+			prev.setNext(node);
+			node.setNext(current);
 		} else {
-			Node<T> current = nodeAt(pos);
-			if (pos != size) {
-				Node<T> prev = current;
-				prev.setNext(node);
-				node.setNext(current);
-			} else {
-				current.setNext(node);
-			}
+			current.setNext(node);
 		}
 		return node;
 	}
 	
 	private Node<T> nodeAt(int pos) {
-		if (pos < 0 || pos >= size || head == null) return null;
-		Node<T> current = head;
+		if (pos < 0 || pos >= size) return null;
+		Node<T> current = frontNode();
 		int i = 0;
 		while (current.getNext() != null && i < pos) {
 			current = current.getNext();
+			i++;
 		}
 		return current;
 	}
@@ -64,36 +55,59 @@ public class LinkedList<T> {
 	/** Gets a reference to the first node in the list.
 	 * @return Returns a reference to the head node.
 	 */
-	public Node<T> front() {
-		return head;
+	public T front() {
+		return frontNode().getValue();
 	}
 	
 	/** Gets a reference to the last node in the list.
 	 * @return Returns a reference to the last node.
 	 */
-	public Node<T> back() {
+	public T back() {
+		return backNode().getValue();
+	}
+	
+	private Node<T> frontNode() {
+		return head.getNext();
+	}
+	
+	private Node<T> backNode() {
 		Node<T> current = head;
-		if (head != null) {
-			while (current.getNext() != null) {
-				current = current.getNext();
-			}
+		while (current.getNext() != null) {
+			current = current.getNext();
 		}
 		return current;
 	}
 	
+	/** Gets a reference to the value at a position in the list.
+	 * @param pos The index in the list.
+	 * @return Returns a reference to the value.
+	 */
 	public T at(int pos) {
-		return null;
+		return nodeAt(pos).getValue();
 	}
 	
-	public void remove(int pos) {
-		
+	/** Removes a node from the list.
+	 * @param pos The index of the element that will be removed.
+	 * @return Returns false if the position is out of range or true otherwise.
+	 */
+	public boolean remove(int pos) {
+		if (pos < 0 || pos >= size - 1) return false;
+		if (pos == 0) {
+			Node<T> next = frontNode().getNext();
+			head.setNext(next);
+		} else {
+			Node<T> prev = nodeAt(pos - 1);
+			Node<T> next = prev.getNext().getNext();
+			prev.setNext(next);
+		}
+		return true;
 	}
 	
 	/** Clears the list.
 	 * 
 	 */
 	public void clear() {
-		head = null;
+		head.setNext(null);;
 		size = 0;
 	}
 	

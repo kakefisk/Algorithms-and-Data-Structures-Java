@@ -12,7 +12,7 @@ public class CircularBuffer<T> {
 	}
 	
 	public boolean addFirst(int n) {
-		
+		return true;
 	}
 
 }
