@@ -2,27 +2,7 @@ package ads;
 
 public class BinaryTree<T> {
 	
-	protected static class Node<T> {
-		private Node<T> left = null;
-		private Node<T> right = null;
-		private T value = null;
-		
-		Node() {}
-		
-		Node(T t) {
-			setValue(t);
-		}
-
-		public T getValue() {
-			return value;
-		}
-
-		public void setValue(T value) {
-			this.value = value;
-		}
-	}
-	
-	protected Node<T> root;
+	protected BinaryNode<T> root;
 	private int size;
 	public enum SearchMethod {BREADTH_FIRST, POST_ORDER, INORDER, PRE_ORDER};
 	

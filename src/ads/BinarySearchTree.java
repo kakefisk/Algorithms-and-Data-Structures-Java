@@ -1,6 +1,6 @@
 package ads;
 
-public class BinarySearchTree<T> extends BinaryTree<T> {
+public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
 	/** 
 	 * A tree where the left child is <= parent and the right child is > parent
 	 */
@@ -9,10 +9,10 @@ public class BinarySearchTree<T> extends BinaryTree<T> {
 	}
 	
 	public void insert(T t) {
-		Node<T> node = new Node<T>(t);
-		Node<T> current = root;
+		BinaryNode<T> node = new BinaryNode<T>(t);
+		BinaryNode<T> current = root;
 		while (true) {
-			if (node.getValue() <= current.getValue()) {
+			if (node.getValue().compareTo(current.getValue()) <= 0) {
 				
 			}
 		}
