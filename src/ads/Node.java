@@ -1,6 +1,6 @@
 package ads;
 
-public class Node<T> {
+/*public class Node<T> {
 
 	private T value;
 	private Node<T> next;
@@ -25,4 +25,4 @@ public class Node<T> {
 		this.next = next;
 	}
 
-}
+}*/
