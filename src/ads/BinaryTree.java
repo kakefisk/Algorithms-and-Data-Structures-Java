@@ -1,25 +1,81 @@
 package ads;
 
+/** A tree datastructure where each node have at maximum two children nodes.
+ *
+ */
 public class BinaryTree<T> {
 	
-	protected BinaryNode<T> root;
-	private int size;
+	protected BinaryNode<T> root = null;
+	private int size = 0;
 	public enum SearchMethod {BREADTH_FIRST, POST_ORDER, INORDER, PRE_ORDER};
 	
 	public BinaryTree() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void insert(T t) {
+	/** Adds a new element at the first empty position.
+	 * @param object The object to add to the tree.
+	 */
+	public void add(T object) {
+		BinaryNode<T> node = new BinaryNode<T>(object);
+		if (root == null) {
+			root = node;
+		} else {
+			
+		}
+	}
+	
+	/** Adds a new object at the given position.
+	 * @param pos 
+	 * @param object The object to add to the tree.
+	 */
+	public void insert(int pos, T object) {
+		BinaryNode<T> node = new BinaryNode<T>(object);
+		if (root == null) {
+			root = node;
+		} else {
+			
+		}
+	}
+	
+	public T getAt(int pos) {
+		return getNode(pos).getValue();
+	}
+	
+	public BinaryNode<T> getNode(int pos) {
+		if (isEmpty() || pos < 0) return null;
+		BinaryNode<T> current = root;
+		int i = 0;
+		int bit = 0;
+		while (bit <= pos) {
+			bit = pos & (1 << i);
+			if (bit != 0) {
+				current = root.getRight();
+			} else {
+				current = root.getLeft();
+			}
+			i++;
+		}
+		return current;
+	}
+	
+	public void delete(int pos) {
 		
 	}
 	
-	public void delete(/* ? */) {
-		
+	/** Gets the height of the tree
+	 * @return Returns 
+	 */
+	public int getHeight() {
+		return 0;
 	}
 	
-	public BinaryTree getSubtree() {
+	public BinaryTree getSubtree(int pos) {
 		return null;
+	}
+	
+	public boolean isEmpty() {
+		return root == null;
 	}
 	
 	/** Checks whether the tree is isomorphic with an other tree.
@@ -51,11 +107,25 @@ public class BinaryTree<T> {
 		return results[nodeNum];
 	}
 	
-	
+	public void traverse(SearchMethod method, Callback callback) {
+		switch (method) {
+		case INORDER:
+			
+			break;
+		case BREADTH_FIRST:
+			Queue queue;
+			break;
+			default:
+				break;
+		}
+	}
 	
 	public String toString(SearchMethod method) {
 		switch (method) {
 		case INORDER:
+			
+			break;
+		case BREADTH_FIRST:
 			
 			break;
 			default:

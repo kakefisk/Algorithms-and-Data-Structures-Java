@@ -2,8 +2,8 @@ package ads;
 
 public class BinaryNode<T> {
 	private T value;
-	private BinaryNode<T> right;
-	private BinaryNode<T> left;
+	private BinaryNode<T> right = null;
+	private BinaryNode<T> left = null;
 
 	public BinaryNode(T value) {
 		this.value = value;
