@@ -2,35 +2,36 @@ package ads;
 
 public class LinkedStack<T> implements Stack<T> {
 
-	private int size = 0;
-	private Node<T> head = new Node<T>(null);
+	LinkedList<T> list;
 	
 	LinkedStack() {
 		
 	}
 	
 	public void push(T object) {
-		
+		list.add(object);
 	}
 	
 	public T peek() {
-		return null;
+		return list.front();
 	}
 	
 	public T pop() {
-		return null;
+		T peek = list.front();
+		list.remove(0);
+		return peek;
 	}
 	
 	public int size() {
-		return size;
+		return list.size();
 	}
 	
 	public boolean empty() {
-		return size == 0;
+		return list.empty();
 	}
 	
 	public void clear() {
-		
+		list.clear();
 	}
 
 }
