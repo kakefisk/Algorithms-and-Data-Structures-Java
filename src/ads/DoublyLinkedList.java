@@ -61,7 +61,7 @@ public class DoublyLinkedList<T> {
 			int i = size - 1;
 			current = tail.getPrev();
 			while (i > pos) {
-				current = current.getNext();
+				current = current.getPrev();
 				i--;
 			}
 		}
