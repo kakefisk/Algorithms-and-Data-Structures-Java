@@ -2,17 +2,15 @@ import ads.ArrayList;
 import ads.BinaryTree;
 import ads.CircularBuffer;
 import ads.DoublyLinkedList;
+import ads.Graph;
 import ads.LinkedList;
 
 public class Program {
 
 	public static void main(String[] args) {
-		CircularBuffer<Integer> buf = new CircularBuffer<Integer>(3);
-		buf.write(100);
-		buf.read();
-		for (int i = 0; i < 10; i++) {
-			buf.write(i);
-		}
+		System.out.println(Graph.numEdgesInCompleteGraph(2));
+		System.out.println(Graph.numEdgesInCompleteGraph(3));
+		System.out.println(Graph.numEdgesInCompleteGraph(4));
 	}
 
 }
