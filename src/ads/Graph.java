@@ -19,20 +19,13 @@ public class Graph {
 		}
 	}
 	
-	private static class NeighborMatrix implements Matrix {
-		int matrix[][];
-		
-		public String toString() {
-			return "";
-		}
-		
-		public boolean isSymetric() {
-			return false;
-		}
-		
-		public Graph getGraph() {
-			return null;
-		}
+	private static class NeighborList {
+		ArrayList<ArrayList<Node>> list;
+	}
+	
+	private static class Vertex {
+		int nr = 0;
+		ArrayList<Vertex> list = new ArrayList<Vertex>();
 	}
 	
 	public boolean isComplete() {

@@ -1,5 +1,5 @@
 package ads;
 
 public interface Callback {
-	void execute();
+	void execute(Object o);
 }

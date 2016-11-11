@@ -1,9 +1,17 @@
 package ads;
 
-public class Queue {
-
-	public Queue() {
-		// TODO Auto-generated constructor stub
-	}
+public interface Queue<T> {
+	
+	public void push(T value);
+	
+	public T pop();
+	
+	public T peek();
+	
+	public boolean isEmpty();
+	
+	public int size();
+	
+	public void clear();
 
 }

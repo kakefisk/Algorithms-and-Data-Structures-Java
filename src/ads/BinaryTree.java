@@ -1,6 +1,6 @@
 package ads;
 
-/** A tree datastructure where each node have at maximum two children nodes.
+/** A tree data structure where each node have at maximum two children nodes.
  *
  */
 public class BinaryTree<T> {
@@ -13,6 +13,16 @@ public class BinaryTree<T> {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/** Construct Binary Tree from a root node.
+	 * 
+	 */
+	public BinaryTree(BinaryNode<T> root) {
+		this.root = root;
+		/* TODO: Figure out what to do with size member.
+		 * Maybe make size method O(n).
+		 */
+	}
+	
 	/** Adds a new element at the first empty position.
 	 * @param object The object to add to the tree.
 	 */
@@ -21,12 +31,30 @@ public class BinaryTree<T> {
 		if (root == null) {
 			root = node;
 		} else {
-			
+			LinkedQueue<BinaryNode<T>> queue = new LinkedQueue<BinaryNode<T>>();
+			queue.push(root);
+			while (!queue.isEmpty()) {
+				BinaryNode<T> current = queue.pop();
+				
+				if (current.getLeft() != null) {
+					queue.push(current.getLeft());
+				} else {
+					current.setLeft(node);
+					break;
+				}
+				if (current.getRight() != null) {
+					queue.push(current.getRight());
+				} else {
+					current.setRight(node);
+					break;
+				}
+			}
 		}
 	}
 	
 	/** Adds a new object at the given position.
-	 * @param pos 
+	 * TODO Can not insert if node already exist.
+	 * @param pos The position.
 	 * @param object The object to add to the tree.
 	 */
 	public void insert(int pos, T object) {
@@ -34,14 +62,34 @@ public class BinaryTree<T> {
 		if (root == null) {
 			root = node;
 		} else {
-			
+			BinaryNode<T> temp = root;
+			String binary = Integer.toBinaryString(pos);
+			for (int i = 0; i < binary.length(); i++) {
+				if (binary.charAt(i) == '0') {
+					if (temp.getLeft() == null) {
+						temp = temp.getLeft();
+					}
+				} else {
+					
+				}
+			}
 		}
 	}
 	
+	/** Gets the value at a given position.
+	 * 
+	 * @param pos The position.
+	 * @return Returns the value of the node.
+	 */
 	public T getAt(int pos) {
 		return getNode(pos).getValue();
 	}
 	
+	/** Gets the BinaryNode at a given position.
+	 * 
+	 * @param pos The position.
+	 * @return Returns the BinaryNode.
+	 */
 	public BinaryNode<T> getNode(int pos) {
 		if (isEmpty() || pos < 0) return null;
 		BinaryNode<T> current = root;
@@ -63,17 +111,26 @@ public class BinaryTree<T> {
 		
 	}
 	
-	/** Gets the height of the tree
+	/** Gets the height of the tree.
 	 * @return Returns 
 	 */
 	public int getHeight() {
 		return 0;
 	}
 	
-	public BinaryTree getSubtree(int pos) {
-		return null;
+	/** Gets a subtree starting at the specified node.
+	 * 
+	 * @param pos The position to start the subtree.
+	 * @return Returns a new BinaryTree as a subtree.
+	 */
+	public BinaryTree<T> getSubtree(int pos) {
+		return new BinaryTree<T>(getNode(pos));
 	}
 	
+	/** Checks whether the binary tree is empty.
+	 * 
+	 * @return Returns true if the tree is empty and false otherwise.
+	 */
 	public boolean isEmpty() {
 		return root == null;
 	}
@@ -108,12 +165,25 @@ public class BinaryTree<T> {
 	}
 	
 	public void traverse(SearchMethod method, Callback callback) {
+		if (isEmpty()) return;
 		switch (method) {
 		case INORDER:
 			
 			break;
 		case BREADTH_FIRST:
-			Queue queue;
+			LinkedQueue<BinaryNode<T>> queue = new LinkedQueue<BinaryNode<T>>();
+			queue.push(root);
+			while (!queue.isEmpty()) {
+				BinaryNode<T> current = queue.pop();
+				callback.execute(current.getValue());
+				
+				if (current.getLeft() != null) {
+					queue.push(current.getLeft());
+				}
+				if (current.getRight() != null) {
+					queue.push(current.getRight());
+				}
+			}
 			break;
 			default:
 				break;
@@ -121,16 +191,14 @@ public class BinaryTree<T> {
 	}
 	
 	public String toString(SearchMethod method) {
-		switch (method) {
-		case INORDER:
-			
-			break;
-		case BREADTH_FIRST:
-			
-			break;
-			default:
-				break;
-		}
-		return "";
+		final String result = "";
+		/*traverse(method, new Callback() {
+			String str = "";
+			@Override
+			public void execute(Object o) {
+				result += o;
+			}
+		});*/
+		return result;
 	}
 }

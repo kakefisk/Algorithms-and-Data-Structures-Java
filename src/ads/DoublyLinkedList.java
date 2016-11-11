@@ -45,29 +45,6 @@ public class DoublyLinkedList<T> {
 		
 	}
 	
-	private DoubleNode<T> nodeAt(int pos) {
-		if (pos < 0 || pos >= size) return null;
-		DoubleNode<T> current;
-		
-		// Start from head if position is at lower half
-		if (pos <= size/2) {
-			int i = 0;
-			current = head.getNext();
-			while (i < pos) {
-				current = current.getNext();
-				i++;
-			}
-		} else { // or from tail if not
-			int i = size - 1;
-			current = tail.getPrev();
-			while (i > pos) {
-				current = current.getPrev();
-				i--;
-			}
-		}
-		return current;
-	}
-	
 	/** Gets the first object.
 	 * @return Returns a reference to the first object.
 	 */
@@ -127,6 +104,29 @@ public class DoublyLinkedList<T> {
 	 */
 	public boolean empty() {
 		return size == 0;
+	}
+	
+	private DoubleNode<T> nodeAt(int pos) {
+		if (pos < 0 || pos >= size) return null;
+		DoubleNode<T> current;
+		
+		// Start from head if position is at lower half
+		if (pos <= size/2) {
+			int i = 0;
+			current = head.getNext();
+			while (i < pos) {
+				current = current.getNext();
+				i++;
+			}
+		} else { // or from tail if not
+			int i = size - 1;
+			current = tail.getPrev();
+			while (i > pos) {
+				current = current.getPrev();
+				i--;
+			}
+		}
+		return current;
 	}
 
 }

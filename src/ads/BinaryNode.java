@@ -32,4 +32,8 @@ public class BinaryNode<T> {
 	public void setLeft(BinaryNode<T> left) {
 		this.left = left;
 	}
+	
+	public boolean isLeaf() {
+		return left == null && right == null;
+	}
 }
