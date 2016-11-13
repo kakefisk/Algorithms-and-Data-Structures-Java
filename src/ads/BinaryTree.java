@@ -156,8 +156,7 @@ public class BinaryTree<T> {
 		results[2] = 2;
 		results[3] = 5;
 		for (int i = 4; i <= nodeNum; i++) {
-			for (int j = 0; j < i; j++)
-			{
+			for (int j = 0; j < i; j++) {
 				results[i] += results[j] * results[i - j - 1];
 			}
 		}

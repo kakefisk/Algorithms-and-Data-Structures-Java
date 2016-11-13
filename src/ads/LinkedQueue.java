@@ -16,18 +16,18 @@ public class LinkedQueue<T> implements Queue<T> {
 	@Override
 	public T pop() {
 		T value = peek();
-		list.remove(list.size() - 1);
+		list.remove(0);
 		return value;
 	}
 
 	@Override
 	public T peek() {
-		return list.back();
+		return list.front();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return list.empty();
+		return list.isEmpty();
 	}
 
 	@Override

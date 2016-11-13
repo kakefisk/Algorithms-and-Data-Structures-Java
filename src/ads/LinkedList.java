@@ -127,6 +127,7 @@ public class LinkedList<T> {
 			Node<T> next = prev.getNext().getNext();
 			prev.setNext(next);
 		}
+		size--;
 		return true;
 	}
 	
@@ -141,7 +142,7 @@ public class LinkedList<T> {
 	/** Checks if the list is empty.
 	 * @return Returns true if the list size is 0 or false otherwise.
 	 */
-	public boolean empty() {
+	public boolean isEmpty() {
 		return size == 0;
 	}
 
