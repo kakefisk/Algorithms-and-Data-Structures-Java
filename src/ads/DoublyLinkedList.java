@@ -3,7 +3,7 @@ package ads;
 /** A doubly linked list
  * A linked list where each node points to both its next and previous node.
  */
-public class DoublyLinkedList<T> {
+public class DoublyLinkedList<T> implements List<T> {
 	
 	private int size = 0;
 	private DoubleNode<T> head = new DoubleNode<T>(null);
@@ -34,7 +34,8 @@ public class DoublyLinkedList<T> {
 	 * @param pos The position to insert the object.
 	 * @param object The object to insert.
 	 */
-	public void insert(int pos, T object) {
+	public boolean insert(int pos, T object) {
+		if (pos < 0 || pos >= size) return false;
 		DoubleNode<T> node = new DoubleNode<T>(object);
 		DoubleNode<T> prev = nodeAt(pos - 1);
 		DoubleNode<T> next = prev.getNext();
@@ -42,7 +43,7 @@ public class DoublyLinkedList<T> {
 		node.setPrev(prev);
 		prev.setNext(node);
 		next.setPrev(node);
-		
+		return true;
 	}
 	
 	/** Gets the first object.
@@ -102,7 +103,7 @@ public class DoublyLinkedList<T> {
 	/** Checks if the list is empty.
 	 * @return Returns true if the list size is 0 or false otherwise.
 	 */
-	public boolean empty() {
+	public boolean isEmpty() {
 		return size == 0;
 	}
 	

@@ -1,6 +1,6 @@
 package ads;
 
-public class LinkedList<T> {
+public class LinkedList<T> implements List<T> {
 	
 	protected static class Node<T> {
 
@@ -42,11 +42,10 @@ public class LinkedList<T> {
 	 * @param object The object that will be added to the end.
 	 * @return Returns a reference to the node that was added.
 	 */
-	public Node<T> add(T object) {
+	public void add(T object) {
 		Node<T> node = new Node<T>(object);
 		backNode().setNext(node);
 		size++;
-		return node;
 	}
 	
 	/** Inserts a node with the specified object at the specified position.
@@ -54,8 +53,8 @@ public class LinkedList<T> {
 	 * @param object The object that will be inserted.
 	 * @return Returns a reference to the node that was inserted.
 	 */
-	public Node<T> insert(int pos, T object) {
-		if (pos < 0 || pos > size) return null;
+	public boolean insert(int pos, T object) {
+		if (pos < 0 || pos > size) return false;
 		Node<T> node = new Node<T>(object);
 		Node<T> current = head;
 		int i = 0;
@@ -65,7 +64,7 @@ public class LinkedList<T> {
 		}
 		current.setNext(node);
 		size++;
-		return node;
+		return true;
 	}
 	
 	private Node<T> nodeAt(int pos) {

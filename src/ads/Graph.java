@@ -19,7 +19,7 @@ public class Graph {
 		}
 	}
 	
-	private static class NeighborList {
+	private static class AdjacencyList {
 		ArrayList<ArrayList<Node>> list;
 	}
 	
