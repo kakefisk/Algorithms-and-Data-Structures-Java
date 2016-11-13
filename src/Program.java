@@ -1,5 +1,6 @@
 import ads.ArrayList;
 import ads.BinaryTree;
+import ads.BinaryTree.SearchMethod;
 import ads.Callback;
 import ads.CircularBuffer;
 import ads.DoublyLinkedList;
@@ -14,12 +15,7 @@ public class Program {
 		tree.add(5);
 		tree.add(1);
 		tree.add(20);
-		tree.traverse(BinaryTree.SearchMethod.BREADTH_FIRST, new Callback() {
-			@Override
-			public void execute(Object o) {
-				System.out.println("" + o + "\n");
-			}
-		});
+		System.out.println(tree.toString(SearchMethod.INORDER));
 	}
 
 }

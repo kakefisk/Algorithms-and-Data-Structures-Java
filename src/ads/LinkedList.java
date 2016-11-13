@@ -57,14 +57,14 @@ public class LinkedList<T> {
 	public Node<T> insert(int pos, T object) {
 		if (pos < 0 || pos > size) return null;
 		Node<T> node = new Node<T>(object);
-		Node<T> current = nodeAt(pos);
-		if (pos != size) {
-			Node<T> prev = current;
-			prev.setNext(node);
-			node.setNext(current);
-		} else {
-			current.setNext(node);
+		Node<T> current = head;
+		int i = 0;
+		while (current.getNext() != null && i < pos) {
+			current = current.getNext();
+			i++;
 		}
+		current.setNext(node);
+		size++;
 		return node;
 	}
 	
@@ -83,6 +83,7 @@ public class LinkedList<T> {
 	 * @return Returns a reference to the head node.
 	 */
 	public T front() {
+		if (isEmpty()) return null;
 		return frontNode().getValue();
 	}
 	
@@ -90,6 +91,7 @@ public class LinkedList<T> {
 	 * @return Returns a reference to the last node.
 	 */
 	public T back() {
+		if (isEmpty()) return null;
 		return backNode().getValue();
 	}
 	
@@ -110,6 +112,7 @@ public class LinkedList<T> {
 	 * @return Returns a reference to the value.
 	 */
 	public T at(int pos) {
+		if (pos < 0 || pos >= size) return null;
 		return nodeAt(pos).getValue();
 	}
 	
@@ -118,7 +121,7 @@ public class LinkedList<T> {
 	 * @return Returns false if the position is out of range or true otherwise.
 	 */
 	public boolean remove(int pos) {
-		if (pos < 0 || pos >= size - 1) return false;
+		if (pos < 0 || pos > size - 1) return false;
 		if (pos == 0) {
 			Node<T> next = frontNode().getNext();
 			head.setNext(next);

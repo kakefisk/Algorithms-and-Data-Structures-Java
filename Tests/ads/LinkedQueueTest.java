@@ -24,7 +24,7 @@ public class LinkedQueueTest {
 		assertTrue("First call to pop removes the first value that was pushed.", queue.pop() == 10);
 		assertTrue("Size is decremented after a pop.", queue.size() == 1);
 		queue.push(30);
-		assertTrue("Pop removes the first in the queue.", queue.pop() == 20);
+		assertTrue("Pop removes the first item in the queue.", queue.pop() == 20);
 	}
 
 	@Test

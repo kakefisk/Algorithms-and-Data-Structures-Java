@@ -2,7 +2,7 @@ package ads;
 
 public class LinkedStack<T> implements Stack<T> {
 
-	LinkedList<T> list;
+	LinkedList<T> list = new LinkedList<T>();
 	
 	LinkedStack() {
 		
@@ -18,7 +18,7 @@ public class LinkedStack<T> implements Stack<T> {
 	
 	public T pop() {
 		T peek = list.front();
-		list.remove(0);
+		list.remove(list.size() - 1);
 		return peek;
 	}
 	
@@ -26,8 +26,8 @@ public class LinkedStack<T> implements Stack<T> {
 		return list.size();
 	}
 	
-	public boolean empty() {
-		return list.empty();
+	public boolean isEmpty() {
+		return list.isEmpty();
 	}
 	
 	public void clear() {

@@ -167,7 +167,6 @@ public class BinaryTree<T> {
 		if (isEmpty()) return;
 		switch (method) {
 		case INORDER:
-			
 			break;
 		case BREADTH_FIRST:
 			LinkedQueue<BinaryNode<T>> queue = new LinkedQueue<BinaryNode<T>>();
@@ -189,15 +188,19 @@ public class BinaryTree<T> {
 		}
 	}
 	
+	public String toString() {
+		return toString(SearchMethod.BREADTH_FIRST);
+	}
+	
 	public String toString(SearchMethod method) {
-		final String result = "";
-		/*traverse(method, new Callback() {
-			String str = "";
+		StringBuilder str = new StringBuilder();
+		traverse(method, new Callback() {
 			@Override
 			public void execute(Object o) {
-				result += o;
+				str.append(o.toString());
+				str.append("\n");
 			}
-		});*/
-		return result;
+		});
+		return str.toString();
 	}
 }

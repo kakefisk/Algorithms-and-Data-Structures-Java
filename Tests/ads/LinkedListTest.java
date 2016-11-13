@@ -7,11 +7,6 @@ import org.junit.Test;
 public class LinkedListTest {
 
 	@Test
-	public void testLinkedList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testAdd() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.add(5);
@@ -71,7 +66,7 @@ public class LinkedListTest {
 		list.add(30);
 		
 		assertTrue("Negative index fails", list.at(-1) == null);
-		assertTrue("Index out of bound fails.", list.at(1) == null);
+		assertTrue("Index out of bound fails.", list.at(list.size()) == null);
 		
 		assertTrue("at() gets the correct value.", list.at(1) == 20);
 	}
@@ -97,11 +92,6 @@ public class LinkedListTest {
 		list.add(10);
 		list.add(20);
 		list.add(30);
-	}
-
-	@Test
-	public void testEmpty() {
-		fail("Not yet implemented");
 	}
 
 }
