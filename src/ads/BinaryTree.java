@@ -163,10 +163,34 @@ public class BinaryTree<T> {
 		return results[nodeNum];
 	}
 	
+	private void recurOrder(BinaryNode<T> node, Callback callback, SearchMethod method) {
+		if (method == SearchMethod.PRE_ORDER)
+		{
+			callback.execute(node.getValue());
+		}
+		if (node.getLeft() != null) {
+			recurOrder(node.getLeft(), callback, method);
+		}
+		if (method == SearchMethod.INORDER)
+		{
+			callback.execute(node.getValue());
+		}
+		if (node.getRight() != null) {
+			recurOrder(node.getRight(), callback, method);
+		}
+		if (method == SearchMethod.POST_ORDER)
+		{
+			callback.execute(node.getValue());
+		}
+	}
+	
 	public void traverse(SearchMethod method, Callback callback) {
 		if (isEmpty()) return;
 		switch (method) {
+		case PRE_ORDER:
 		case INORDER:
+		case POST_ORDER:
+			recurOrder(root, callback, method);
 			break;
 		case BREADTH_FIRST:
 			LinkedQueue<BinaryNode<T>> queue = new LinkedQueue<BinaryNode<T>>();

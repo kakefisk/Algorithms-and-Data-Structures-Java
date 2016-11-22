@@ -1,11 +1,11 @@
 package ads;
 
-public class ArrayList<T> {
+public class ArrayList2<T> {
 	private T[] list;
 	private int capacity = 1;
 	private int size = 0;
 	
-	public ArrayList() {
+	public ArrayList2() {
 		list = (T[])new Object[capacity];
 	}
 	

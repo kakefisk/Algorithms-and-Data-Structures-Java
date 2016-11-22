@@ -1,4 +1,4 @@
-import ads.ArrayList;
+import ads.ArrayList2;
 import ads.BinaryTree;
 import ads.BinaryTree.SearchMethod;
 import ads.Callback;
@@ -7,15 +7,20 @@ import ads.DoublyLinkedList;
 import ads.Graph;
 import ads.LinkedList;
 import ads.Matrix;
+import ads.NeighborMatrix;
 
 public class Program {
 
 	public static void main(String[] args) {
-		BinaryTree<Integer> tree = new BinaryTree<Integer>();
-		tree.add(5);
-		tree.add(1);
-		tree.add(20);
-		System.out.println(tree.toString(SearchMethod.INORDER));
+		Graph g = new Graph();
+	    Graph.Vertex frankfurt = g.addVertex(10);
+	    Graph.Vertex wurzburg = g.addVertex(20);
+	    Graph.Vertex munchen = g.addVertex(30);
+	    g.addPath(frankfurt, munchen);
+	    g.addDirectedPath(frankfurt, wurzburg);
+	    g.addDirectedPath(wurzburg, munchen);
+	    NeighborMatrix matrix = g.getNeighborMatrix();
+	    System.out.println(matrix);
 	}
 
 }

@@ -2,8 +2,8 @@ package ads;
 
 public class NeighborMatrix extends Matrix {
 	
-	public NeighborMatrix(int width, int height) {
-		super(width, height);
+	public NeighborMatrix(int size) {
+		super(size, size);
 	}
 	
 	public NeighborMatrix(int array[][]) {
