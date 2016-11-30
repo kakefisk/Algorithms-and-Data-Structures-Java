@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class LinkedQueueTest {
+public class QueueTest {
 	
 	@Test
 	public void testPush() {

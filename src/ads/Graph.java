@@ -106,7 +106,17 @@ public class Graph {
 		return matrix;
 	}
 	
-	public ArrayList<Vertex> fastestPath() {
+	public static ArrayList<Vertex> shortestPath(Vertex a, Vertex b) {
+		/*LinkedQueue<Pair<Vertex, Vertex>> queue = new LinkedQueue<Pair<Vertex, Vertex>>();
+		queue.push(new Pair<Vertex, Vertex>(a, null));
+		while (!queue.isEmpty()) {
+			Pair<Vertex, Vertex> node = queue.pop();
+			ArrayList<Vertex> neighbors = node.a.getNeighbors();
+			int numNeighbors = neighbors.size();
+			for (int i = 0; i < numNeighbors; i++) {
+				queue.push(new Pair<Vertex, Vertex>(neighbors.get(i), node.b));
+			}
+		} */
 		return null;
 	}
 	

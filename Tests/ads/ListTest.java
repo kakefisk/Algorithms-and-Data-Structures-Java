@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class LinkedListTest {
+public class ListTest {
 
 	@Test
 	public void testAdd() {
@@ -19,8 +19,8 @@ public class LinkedListTest {
 	@Test
 	public void testInsert() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
-		assertTrue("Negative index fails", list.insert(-1, 0) == null);
-		assertTrue("Index out of bound fails.", list.insert(1, 0) == null);
+		assertFalse("Negative index fails", list.insert(-1, 0));
+		assertFalse("Index out of bound fails.", list.insert(1, 0));
 		assertTrue("List is still empty.", list.isEmpty());
 		
 		list.add(10);
