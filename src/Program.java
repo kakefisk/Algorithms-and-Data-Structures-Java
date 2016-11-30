@@ -6,21 +6,18 @@ import ads.CircularBuffer;
 import ads.DoublyLinkedList;
 import ads.Graph;
 import ads.LinkedList;
+import ads.LinkedTabularList;
 import ads.Matrix;
 import ads.NeighborMatrix;
 
 public class Program {
 
 	public static void main(String[] args) {
-		Graph g = new Graph();
-	    Graph.Vertex frankfurt = g.addVertex(10);
-	    Graph.Vertex wurzburg = g.addVertex(20);
-	    Graph.Vertex munchen = g.addVertex(30);
-	    g.addPath(frankfurt, munchen);
-	    g.addDirectedPath(frankfurt, wurzburg);
-	    g.addDirectedPath(wurzburg, munchen);
-	    NeighborMatrix matrix = g.getNeighborMatrix();
-	    System.out.println(matrix);
+		LinkedTabularList<Integer> list = new LinkedTabularList<Integer>();
+		list.add(6);
+		list.add(10);
+		list.add(9);
+		System.out.println(list.at(1));
 	}
 
 }

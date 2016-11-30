@@ -18,8 +18,14 @@ public class NeighborMatrix extends Matrix {
 		return null;
 	}
 	
-	public boolean isConnected() {
-		// A+A^2+A^n all cells != 0 => connected
+	public boolean isCyclic() {
+		// A+A^2+A^n all cells != 0 => cyclic
+		
+		/** hmm
+		 * M + M^2 + ... + M^n = N
+		 * Svar beregn N, beregn sum lik summen av tallene i diagonalen til N
+		 * Hvis sum>0 sp er grafen syklisk.
+		 */
 		return false;
 	}
 	

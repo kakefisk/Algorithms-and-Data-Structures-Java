@@ -5,25 +5,25 @@ public class LinkedTabularList<T> implements List<T> {
 	private int capacity = 8;
 	private int next[];
 	private T value[];
-	private int start = -1;
+	private int start = 0;
 	private int free = 0;
 	private int size = 0;
 	
 	public LinkedTabularList() {
 		next = new int[capacity];
 		value = (T[]) new Object[capacity];
+		for (int i = 0; i < capacity - 1; i++) {
+			next[i] = i + 1;
+		}
+		next[capacity - 1] = -1;
 	}
 
 	public void add(T t) {
-		if (start == -1) {
-			start = free;
-		}
+		if (free == -1) return;
 		int current = free;
 		free = next[free];
-		value[free] = t;
 		next[current] = free;
-		next[free] = -1;
-		free++;
+		value[current] = t;
 		size++;
 	}
 
@@ -38,18 +38,17 @@ public class LinkedTabularList<T> implements List<T> {
 	}
 
 	public T at(int pos) {
-		// TODO Auto-generated method stub
-		return null;
+		if (pos < 0 || pos >= size) return null;
+		return value[internalIndex(pos)];
 	}
 	
 	private int internalIndex(int pos) {
 		// TODO: Write this in a better way
 		int n = start;
-		for (int i = 0; i < capacity && n != -1; i++) {
+		for (int i = 0; i < pos; i++) {
 			n = next[n];
-			if (i == pos) break;
 		}
-		return -1;
+		return n;
 	}
 
 	public int size() {
