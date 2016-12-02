@@ -5,7 +5,7 @@ public class LinkedTabularList<T> implements List<T> {
 	private int capacity = 8;
 	private int next[];
 	private T value[];
-	private int start = 0;
+	private int head = 0;
 	private int free = 0;
 	private int size = 0;
 	
@@ -28,12 +28,47 @@ public class LinkedTabularList<T> implements List<T> {
 	}
 
 	public boolean insert(int pos, T t) {
-		// TODO Auto-generated method stub
-		return false;
+		if (pos < 0 || pos > size) return false;
+		
+		size++;
+		if (pos == 0) {
+			int nxt = head;
+			int current = free;
+			free = next[free];
+			int pointsToCurrent = findPointerTo(current);
+			head = current;
+			next[pointsToCurrent] = next[current];
+			next[current] = nxt;
+			value[current] = t;
+			return true;
+		}
+		
+		int prev = internalIndex(pos - 1);
+		int current = free;
+		free = next[free];
+		int pointsToCurrent = findPointerTo(current);
+		next[pointsToCurrent] = next[current];
+		int nxt = next[prev];
+		next[prev] = current;
+		next[current] = nxt;
+		value[current] = t;
+		return true;
 	}
 
 	public boolean remove(int pos) {
-		// TODO Auto-generated method stub
+		if (pos < 0 || pos > size) return false;
+		if (pos == head) {
+			head = next[head];
+		}
+		int prev = internalIndex(pos - 1);
+		int current = next[prev];
+		next[prev] = next[current];
+		next[findLast()] = current;
+		next[current] = -1;
+		size--;
+		if (free == -1) {
+			free = current;
+		}
 		return false;
 	}
 
@@ -42,11 +77,29 @@ public class LinkedTabularList<T> implements List<T> {
 		return value[internalIndex(pos)];
 	}
 	
+	private int findLast() {
+		int n = head;
+		for (int i = 0; i < capacity; i++) {
+			n = next[n];
+			if (n == -1) return i + 1;
+		}
+		return -1;
+	}
+	
 	private int internalIndex(int pos) {
-		// TODO: Write this in a better way
-		int n = start;
+		int n = head;
 		for (int i = 0; i < pos; i++) {
 			n = next[n];
+		}
+		return n;
+	}
+	
+	private int findPointerTo(int pos) {
+		int n = head;
+		for (int i = 0; i < size; i++) {
+			int nxt = next[n];
+			if (nxt == pos) break;
+			n = nxt;
 		}
 		return n;
 	}
@@ -60,9 +113,36 @@ public class LinkedTabularList<T> implements List<T> {
 	}
 
 	public void clear() {
-		start = -1;
+		head = 0;
 		free = 0;
 		size = 0;
+	}
+	
+	public String toString() {
+		String result = "";
+		int n = head;
+		for (int i = 0; i < size; i++) {
+			result += value[i].toString();
+			if (i < size - 1) {
+				result += ", ";
+			}
+			n = next[n];
+		}
+		return result;
+	}
+
+	@Override
+	public T front() {
+		return value[head];
+	}
+
+	@Override
+	public T back() {
+		int n = head;
+		for (int i = 0; i < size - 1; i++) {
+			n = next[n];
+		}
+		return value[n];
 	}
 
 }

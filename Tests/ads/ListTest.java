@@ -8,7 +8,7 @@ public class ListTest {
 
 	@Test
 	public void testAdd() {
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		LinkedTabularList<Integer> list = new LinkedTabularList<Integer>();
 		list.add(5);
 		assertTrue(".add() increments the size by 1.", list.size() == 1);
 		assertTrue("The object is added when the list is empty", list.front() == 5);
@@ -18,7 +18,7 @@ public class ListTest {
 
 	@Test
 	public void testInsert() {
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		LinkedTabularList<Integer> list = new LinkedTabularList<Integer>();
 		assertFalse("Negative index fails", list.insert(-1, 0));
 		assertFalse("Index out of bound fails.", list.insert(1, 0));
 		assertTrue("List is still empty.", list.isEmpty());
@@ -37,7 +37,7 @@ public class ListTest {
 
 	@Test
 	public void testFront() {
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		LinkedTabularList<Integer> list = new LinkedTabularList<Integer>();
 		assertTrue("Empty list returns null.", list.front() == null);
 		
 		list.add(10);
@@ -48,7 +48,7 @@ public class ListTest {
 
 	@Test
 	public void testBack() {
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		LinkedTabularList<Integer> list = new LinkedTabularList<Integer>();
 		assertTrue("Empty list returns null.", list.back() == null);
 		
 		list.add(10);
@@ -59,7 +59,7 @@ public class ListTest {
 
 	@Test
 	public void testAt() {
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		LinkedTabularList<Integer> list = new LinkedTabularList<Integer>();
 		
 		list.add(10);
 		list.add(20);
@@ -73,7 +73,7 @@ public class ListTest {
 
 	@Test
 	public void testRemove() {
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		LinkedTabularList<Integer> list = new LinkedTabularList<Integer>();
 		assertTrue("Removing from an empty list fails.", list.remove(0) == false);
 		list.add(10);
 		list.add(20);
@@ -88,10 +88,13 @@ public class ListTest {
 
 	@Test
 	public void testClear() {
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		LinkedTabularList<Integer> list = new LinkedTabularList<Integer>();
 		list.add(10);
 		list.add(20);
 		list.add(30);
+		list.clear();
+		assertTrue("The size is 0 after clearing.", list.size() == 0);
+		assertTrue("isEmpty returns true after clearing.", list.isEmpty());
 	}
 
 }

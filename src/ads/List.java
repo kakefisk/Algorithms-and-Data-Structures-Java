@@ -5,6 +5,8 @@ public interface List<T> {
 	public boolean insert(int pos, T t);
 	public boolean remove(int pos);
 	public T at(int pos);
+	public T front();
+	public T back();
 	public int size();
 	public boolean isEmpty();
 	public void clear();

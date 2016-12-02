@@ -10,7 +10,7 @@ public class Dictionary<Key, Value> {
 	public void put(Key key, Value value) {
 		int hashkey = hash(key);
 		ArrayList<Pair<Key, Value>> row = list[hashkey];
-		row.add(new Pair(key, value));
+		row.add(new Pair<Key, Value>(key, value));
 	}
 	
 	public Value get(Key key) {

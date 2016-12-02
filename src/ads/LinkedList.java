@@ -48,10 +48,21 @@ public class LinkedList<T> implements List<T> {
 		size++;
 	}
 	
+	/** Sets the value of a node.
+	 * @param pos The position of the node.
+	 * @param value The new value.
+	 * @return Returns false if position is out of bounds or true otherwise.
+	 */
+	public boolean set(int pos, T value) {
+		if (pos < 0 || pos > size) return false;
+		nodeAt(pos).setValue(value);
+		return true;
+	}
+	
 	/** Inserts a node with the specified object at the specified position.
 	 * @param pos The position where the new node will be inserted.
 	 * @param object The object that will be inserted.
-	 * @return Returns a reference to the node that was inserted.
+	 * @return Returns false if position is out of bounds or true otherwise.
 	 */
 	public boolean insert(int pos, T object) {
 		if (pos < 0 || pos > size) return false;
@@ -137,7 +148,7 @@ public class LinkedList<T> implements List<T> {
 	 * 
 	 */
 	public void clear() {
-		head.setNext(null);;
+		head.setNext(null);
 		size = 0;
 	}
 	
@@ -154,5 +165,8 @@ public class LinkedList<T> implements List<T> {
 	public int size() {
 		return size;
 	}
-
+	
+	public void sort() {
+		
+	}
 }
